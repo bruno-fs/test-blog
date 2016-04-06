@@ -2,11 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Le blog</title>
+    <title>Le blog maroto</title>
 </head>
 <body>
+    <div>
+        <h1><a href="/"> Le blog maroto</a> </h1>
+    </div>
 
-<p>Hello, there o/</p>
+    {% for post in posts %}
+
+        <div>
+            <p>published: {{ post.published_date }}</p>
+            <h1><a href=""> {{ post.title }} </a></h1>
+            <p>{{ post.text|linebreaks }}</p>
+        </div>
+
+    {% endfor %}
 
 </body>
 </html>

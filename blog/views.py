@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
 from .models import Post
 from .forms import PostForm
 
@@ -57,7 +56,7 @@ def post_edit(request, pk):
 # publish drafts
 @login_required()
 def post_publish(request, pk):
-    post = get_object_or_404(Post, pk)
+    post = get_object_or_404(Post, pk=pk)
     post.publish()
     return redirect('blog.views.post_detail', pk=pk)
 
@@ -75,19 +74,3 @@ def post_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
     return redirect('blog.views.post_list')
-
-# login
-# def login_view(request):
-#     username = request.POST['username']
-#     password = request.POST['password']
-#     user = authenticate(username=username, password=password)
-#     if user is not None:
-#         if user.is_active:
-#             login(request, user)
-#             # Redirect to a success page.
-#         else:
-#             # Return a 'disabled account' error message
-#
-#     else:
-#
-#     # Return an 'invalid login' error message.

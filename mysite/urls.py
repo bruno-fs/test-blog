@@ -15,14 +15,15 @@ Including another URLconf
 """
 
 
-from django.conf.urls import url, include, patterns
+from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth.views import login, logout
 
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^accounts/login/$', 'django.contrib.auth.login'),
-    # url(r'^accounts/logout/$', 'django.contrib.auth.logout', {'next_page': '/'}),
+    url(r'^admin/', admin.site.urls),
+    url(r'^accounts/login/$', login),
+    url(r'^accounts/logout/$', logout, dict(next_page='/')),
     url(r'', include('blog.urls')),
 ]

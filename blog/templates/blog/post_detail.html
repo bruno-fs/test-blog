@@ -9,7 +9,7 @@
 
             {% if user.is_authenticated %}
                 {% if not post.published_date %}
-                    <a class="btn btn-default" href="{% url 'blog.views.post_publish' pk=post.pk %}">Publish</a>
+                    <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>
                 {% endif %}
 
                 <a class="btn btn-default"

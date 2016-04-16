@@ -2,11 +2,15 @@
 {% load staticfiles %}
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta charset="UTF-8">
     <title>Le blog maroto</title>
-    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    {# bootstrap css #}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+          crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}" />
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" />
 
@@ -17,13 +21,12 @@
     <table style="width: 100%">
         <tr><td>
             {% if user.is_authenticated %}
-                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-                <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
-                <a href="{% url 'logout' %}" class="top-menu"><span class="glyphicon glyphicon-log-out"></span></a>
-
-                <p class="top-menu ">Hello, {{ user.username }}</p>
+                <a href="{% url 'post_new' %}" class="top-menu lead"><span class="glyphicon glyphicon-plus"></span></a>
+                <a href="{% url 'post_draft_list' %}" class="top-menu lead"><span class="glyphicon glyphicon-edit"></span></a>
+                <a href="{% url 'logout' %}" class="top-menu lead"><span class="glyphicon glyphicon-log-out"></span></a>
+                <p class="top-menu lead">Hello, {{ user.username }}</p>
             {% else %}
-                <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+                <a href="{% url 'login' %}" class="top-menu lead"><span class="glyphicon glyphicon-log-in"></span></a>
             {% endif %}
         </td></tr>
         <tr><td>
@@ -35,7 +38,7 @@
 
     <div class="content container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 col-xs">
                 {% block content %}
                 {% endblock %}
             </div>

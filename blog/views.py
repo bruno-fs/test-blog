@@ -57,7 +57,7 @@ def post_edit(request, pk):
 def post_publish(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.publish()
-    return redirect('blog.views.post_detail', pk=pk)
+    return redirect('post_detail', pk=pk)
 
 
 # unpublished posts
